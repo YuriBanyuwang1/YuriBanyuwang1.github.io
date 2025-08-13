@@ -1,0 +1,430 @@
+/* Responsive Design for Tablet Landscape */
+
+/* Tablet Landscape (1024px and up) */
+@media (min-width: 1024px) {
+    .form-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+    
+    .production-info {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .notes-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .signature-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .waste-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    .material-table th,
+    .material-table td {
+        padding: 15px 12px;
+    }
+    
+    .form-header h1 {
+        font-size: 3rem;
+    }
+    
+    .form-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Tablet Portrait (768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .form-wrapper {
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .production-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .notes-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .signature-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .waste-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .form-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Mobile Landscape (480px - 767px) */
+@media (max-width: 767px) and (min-width: 480px) {
+    .form-wrapper {
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .production-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .notes-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .signature-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .waste-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .waste-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .waste-item label {
+        min-width: auto;
+    }
+    
+    .waste-item input {
+        max-width: 100%;
+    }
+    
+    .form-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .material-table {
+        font-size: 12px;
+    }
+    
+    .material-table th,
+    .material-table td {
+        padding: 8px 6px;
+    }
+    
+    .material-table input {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}
+
+/* Mobile Portrait (up to 479px) */
+@media (max-width: 479px) {
+    .form-wrapper {
+        padding: 10px;
+        gap: 8px;
+        margin: 10px;
+    }
+    
+    .production-info {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .notes-section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .signature-section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .waste-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .waste-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .waste-item label {
+        min-width: auto;
+        font-size: 12px;
+    }
+    
+    .waste-item input {
+        max-width: 100%;
+        font-size: 12px;
+    }
+    
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.1rem;
+    }
+    
+    .material-table {
+        font-size: 11px;
+    }
+    
+    .material-table th,
+    .material-table td {
+        padding: 6px 4px;
+    }
+    
+    .material-table input {
+        font-size: 11px;
+        padding: 4px 6px;
+    }
+    
+    .field-group input,
+    .field-group select {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+    
+    .notes-section textarea {
+        font-size: 12px;
+        min-height: 80px;
+        padding: 10px;
+    }
+}
+
+/* Scanner Responsive */
+@media (max-width: 768px) {
+    .scanner-container {
+        padding: 20px 10px;
+    }
+    
+    .scanner-container h2 {
+        font-size: 1.5rem;
+    }
+    
+    #scanner-video {
+        height: 250px;
+    }
+    
+    .scanner-frame {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .machine-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .machine-card {
+        padding: 20px 15px;
+    }
+    
+    .machine-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .machine-preview {
+        padding: 10px;
+    }
+    
+    .machine-preview span {
+        font-size: 12px;
+    }
+}
+
+/* Machine Selection Responsive */
+@media (max-width: 1024px) {
+    .machine-select-container {
+        padding: 20px 15px;
+    }
+    
+    .machine-select-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .machine-grid {
+        gap: 20px;
+    }
+}
+
+/* Form Actions Responsive */
+@media (max-width: 768px) {
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Success Screen Responsive */
+@media (max-width: 768px) {
+    .success-content {
+        padding: 1rem;
+    }
+    
+    .success-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .success-content p {
+        font-size: 1rem;
+    }
+    
+    .success-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}
+
+/* Print Responsive */
+@media print {
+    .form-wrapper {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    .production-info,
+    .waste-section,
+    .result-section,
+    .notes-section,
+    .signature-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .material-table {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .material-table th {
+        background: #333 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .form-actions,
+    .scanner-container,
+    .machine-select-container,
+    #splash-screen,
+    #success-screen {
+        display: none !important;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .form-wrapper {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .material-table th {
+        background: linear-gradient(135deg, #2a5298, #1e3c72);
+    }
+    
+    .result-section {
+        background: linear-gradient(135deg, #e8f4fd, #d1ecf1);
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .field-group input,
+    .field-group select,
+    .material-table input,
+    .waste-item input,
+    .notes-section textarea {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        min-height: 44px;
+        font-size: 16px;
+    }
+    
+    .machine-card {
+        min-height: 120px;
+    }
+    
+    .signature-box {
+        min-height: 100px;
+    }
+}
+
+/* Landscape Orientation Specific */
+@media (orientation: landscape) and (max-height: 600px) {
+    .form-wrapper {
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .production-info {
+        padding: 15px;
+    }
+    
+    .waste-section {
+        padding: 15px;
+    }
+    
+    .result-section {
+        padding: 15px;
+    }
+    
+    .notes-section textarea {
+        min-height: 60px;
+    }
+    
+    .signature-section {
+        margin-top: 10px;
+    }
+} 

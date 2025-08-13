@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form MAKER - CV. Delta Tobacco Cigarettes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .tablet-frame {
+            width: 1024px;
+            height: 768px;
+            margin: 0 auto;
+            background: #2a2a2a;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tablet-screen {
+            width: 100%;
+            height: 100%;
+            background: #f5f5f7;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .status-bar {
+            height: 24px;
+            background: #000;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-left {
+            display: flex;
+            gap: 5px;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .app-container {
+            height: calc(100% - 24px);
+            background: white;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .app-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .app-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .app-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .app-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100%;
+            position: relative;
+            max-width: none;
+        }
+
+        /* Top Toolbar Layout */
+        .top-toolbar {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin-bottom: 0;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .toolbar-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toolbar-title h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .toolbar-title .company {
+            font-size: 12px;
+            opacity: 0.8;
+            margin: 2px 0 0 0;
+        }
+
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .current-time {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .save-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Scanner Screen Styles */
+        .scanner-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .scanner-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .scanner-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .scanner-area {
+            width: 300px;
+            height: 300px;
+            background: #000;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scanner-frame {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #007AFF;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .scanner-frame::before,
+        .scanner-frame::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #007AFF;
+        }
+
+        .scanner-frame::before {
+            top: -3px;
+            left: -3px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .scanner-frame::after {
+            bottom: -3px;
+            right: -3px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .scanner-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #007AFF, transparent);
+            animation: scan-line 2s ease-in-out infinite;
+        }
+
+        @keyframes scan-line {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(180px); }
+            100% { transform: translateY(0); }
+        }
+
+        .scanner-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .scanner-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scanner-btn.primary {
+            background: #007AFF;
+            color: white;
+        }
+
+        .scanner-btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .scanner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scanner-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .scanner-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .scanner-status {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-radius: 25px;
+            border: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Machine Selection Screen */
+        .machine-select-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            padding: 20px;
+            text-align: left;
+            overflow-y: auto;
+        }
+
+        .machine-categories {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+
+        .category-section {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .category-title {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .machine-options {
+            padding: 15px 20px;
+        }
+
+        .machine-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .machine-option:hover {
+            background: #f8f9fa;
+        }
+
+        .machine-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .machine-option input[type="radio"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: #007AFF;
+        }
+
+        .machine-option label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #495057;
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+        }
+
+        .machine-type {
+            font-weight: 600;
+            color: #007AFF;
+            margin-right: 5px;
+        }
+
+        .production-type {
+            font-weight: 600;
+            color: #28a745;
+            margin-left: 5px;
+        }
+
+        /* Bandrol Form Styles */
+        .bandrol-table, .pita-table {
+            overflow-x: auto;
+            border-radius: 0;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-add-row {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-add-row:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .bandrol-row, .pita-row {
+            transition: background-color 0.2s ease;
+        }
+
+        .bandrol-row:hover, .pita-row:hover {
+            background: #f8f9fa;
+        }
+
+        .bandrol-row td, .pita-row td {
+            padding: 8px;
+            border-bottom: 1px solid #f1f3f4;
+            text-align: center;
+        }
+
+        .bandrol-row textarea, .pita-row textarea {
+            resize: vertical;
+            min-height: 40px;
+        }
+
+        /* Material table styles */
+        .material-name-input {
+            font-weight: 600;
+            color: #374151;
+            text-align: left;
+            padding-left: 16px;
+        }
+
+        .unit-select {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .btn-remove-row {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-remove-row:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .btn-remove-team {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 8px;
+        }
+
+        .btn-remove-team:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        /* Form Screen */
+        .form-screen {
+            display: none;
+            position: relative;
+        }
+
+        .form-section {
+            padding: 0;
+            max-width: none;
+            padding-top: 0;
+            margin-top: 0;
+            width: 100%;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 0;
+            margin-bottom: 0;
+            box-shadow: none;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .section-header {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+            color: #495057;
+            font-size: 14px;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        /* Compact spacing for bandrol tables */
+        .bandrol-table .section-content,
+        .pita-table .section-content {
+            padding: 10px;
+        }
+
+        .bandrol-table th,
+        .bandrol-table td,
+        .pita-table th,
+        .pita-table td {
+            padding: 4px 2px;
+        }
+
+        /* Specific styling for pita table input fields */
+        .pita-table .input-cell {
+            width: 100%;
+            min-width: 80px;
+            padding: 12px 16px;
+        }
+
+
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 16px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .static-value {
+            padding: 12px 16px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #f8f9fa;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 100%;
+        }
+
+        .operator-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .operator-item label {
+            background: #007AFF;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .operator-item input {
+            border: none;
+            background: transparent;
+            padding: 8px;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .operator-item input:focus {
+            outline: none;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .materials-table {
+            overflow-x: auto;
+            border-radius: 0;
+            border: none;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #f1f3f4;
+            text-align: center;
+        }
+
+        .material-row {
+            transition: background-color 0.2s ease;
+        }
+
+        .material-row:hover {
+            background: #f8f9fa;
+        }
+
+        .material-name {
+            font-weight: 600;
+            color: #374151;
+            text-align: left;
+            padding-left: 16px;
+        }
+
+        .waste-section {
+            background: #fff8e1;
+        }
+
+        .waste-section .material-name {
+            color: #f57c00;
+        }
+
+        .input-cell {
+            width: 90px;
+            padding: 8px 12px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        /* Wider input for waste section */
+        .waste-row .input-cell {
+            width: 240px;
+            min-width: 240px;
+        }
+
+        .input-cell:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.1);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 8px;
+            border: 1px solid #e1bee7;
+        }
+
+        .result-item label {
+            font-weight: 600;
+            color: #4a148c;
+            font-size: 14px;
+            min-width: 60px;
+        }
+
+        .result-item input {
+            flex: 1;
+            border: 1.5px solid #ce93d8;
+            background: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .result-item .unit {
+            font-weight: 600;
+            color: #4a148c;
+            font-size: 14px;
+        }
+
+        .floating-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: #007AFF;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.6);
+        }
+
+        .fab.secondary {
+            background: #6c757d;
+            box-shadow: 0 4px 16px rgba(108, 117, 125, 0.4);
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .signature-box {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .signature-box h4 {
+            color: #495057;
+            margin-bottom: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .signature-line {
+            border-bottom: 2px solid #6c757d;
+            width: 150px;
+            margin: 0 auto 10px;
+        }
+
+        .signature-box p {
+            color: #6c757d;
+            font-size: 12px;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .form-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tablet-frame">
+        <div class="tablet-screen">
+            <div class="status-bar">
+                <div class="status-left">
+                    <span>9:41</span>
+                </div>
+                <div class="status-right">
+                    <span>📶</span>
+                    <span>📶</span>
+                    <span>🔋 85%</span>
+                </div>
+            </div>
+            
+            <div class="app-container">
+                <div class="container">
+                    <!-- Top Toolbar -->
+                    <div class="top-toolbar" id="mainToolbar" style="display: none;">
+                                                    <div class="toolbar-left">
+                                <button class="back-btn" onclick="backToMachineSelection()">←</button>
+                                <div class="toolbar-title">
+                                    <h1 id="toolbarTitle">MAKER</h1>
+                                    <div class="company">CV. DELTA TOBACCO CIGARETTES</div>
+                                </div>
+                            </div>
+                        <div class="toolbar-right">
+                            <div class="current-time" id="currentDateTime">20:07</div>
+                            <button class="save-btn" onclick="saveForm()">Simpan</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Scanner Screen -->
+                    <div class="scanner-screen" id="scannerScreen">
+                        <div class="scanner-title">Scan Barcode Mesin</div>
+                        <div class="scanner-subtitle">Arahkan kamera ke barcode mesin untuk mendeteksi tipe mesin</div>
+                        
+                        <div class="scanner-area">
+                            <div class="scanner-frame">
+                                <div class="scanner-line"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="scanner-controls">
+                            <button class="scanner-btn primary" onclick="startScanning()">Mulai Scan</button>
+                            <button class="scanner-btn secondary" onclick="showMachineSelection()">Pilih Manual</button>
+                        </div>
+                        
+                        <div class="scanner-status" id="scannerStatus">
+                            Siap untuk scan barcode mesin
+                        </div>
+                    </div>
+
+                    <!-- Machine Selection Screen -->
+                    <div class="machine-select-screen" id="machineSelectScreen">
+                        <div class="scanner-title">Pilih Tipe Mesin</div>
+                        <div class="scanner-subtitle">Pilih kategori dan tipe mesin yang akan digunakan untuk produksi</div>
+                        
+                        <div class="machine-categories">
+                            <!-- Marker Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">1. Marker</h3>
+                                <div class="machine-options">
+                                    <div class="machine-option" onclick="selectMachine('MK8')">
+                                        <input type="radio" name="machine" id="mk8" value="MK8">
+                                        <label for="mk8">
+                                            <span class="machine-type">MK8</span> (tipe mesin) 
+                                            <span class="production-type">SKY Klick</span> (Produksi)
+                                        </label>
+                                    </div>
+                                    <div class="machine-option" onclick="selectMachine('GARANT')">
+                                        <input type="radio" name="machine" id="garant" value="GARANT">
+                                        <label for="garant">
+                                            <span class="machine-type">Garant</span> (tipe mesin) 
+                                            <span class="production-type">SKY Klick</span> (Produksi)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HLP Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">2. HLP</h3>
+                                <div class="machine-options">
+                                    <div class="machine-option" onclick="selectMachine('HLP_BEVEL')">
+                                        <input type="radio" name="machine" id="hlp_bevel" value="HLP_BEVEL">
+                                        <label for="hlp_bevel">
+                                            <span class="machine-type">HLP Bevel</span> (tipe mesin) 
+                                            <span class="production-type">SKY Klick</span> (Produksi)
+                                        </label>
+                                    </div>
+                                    <div class="machine-option" onclick="selectMachine('HLP_SOLO')">
+                                        <input type="radio" name="machine" id="hlp_solo" value="HLP_SOLO">
+                                        <label for="hlp_solo">
+                                            <span class="machine-type">HLP Solo</span> (tipe mesin) 
+                                            <span class="production-type">SKY Klick</span> (Produksi)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bandrol Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">3. Bandrol</h3>
+                                <div class="machine-options">
+                                    <div class="machine-option" onclick="selectMachine('BANDROL')">
+                                        <input type="radio" name="machine" id="bandrol" value="BANDROL">
+                                        <label for="bandrol">
+                                            <span class="machine-type">Bandrol</span> (Tipe Mesin) 
+                                            <span class="production-type">SKY Klick</span> (Produksi)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wrapping Category -->
+                            <div class="category-section">
+                                <h3 class="category-title">4. Wrapping</h3>
+                                <div class="machine-options">
+                                    <div class="machine-option" onclick="selectMachine('WRAPPING')">
+                                        <input type="radio" name="machine" id="wrapping" value="WRAPPING">
+                                        <label for="wrapping">
+                                            <span class="machine-type">Wrapping</span> (tipe mesin) 
+                                            <span class="production-type">SKY Klick</span> (Produksi)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="scanner-btn secondary" onclick="backToScanner()">Kembali ke Scanner</button>
+                    </div>
+
+                    <!-- Form Screen -->
+                    <div class="form-screen" id="formScreen">
+                        <!-- Standard MAKER Form -->
+                        <div class="form-section" id="makerForm">
+                            <!-- Machine & Production Card -->
+                            <div class="section-card">
+                                <div class="section-header">Mesin & Produksi</div>
+                                <div class="section-content">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Mesin</label>
+                                            <input type="text" id="mesin" placeholder="Nama Mesin" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Produksi</label>
+                                            <input type="text" id="produksi" placeholder="Jenis Produksi" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Basic Info Card -->
+                            <div class="section-card">
+                                <div class="section-header">Informasi Tanggal</div>
+                                <div class="section-content">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Hari/Tanggal</label>
+                                            <input type="date" id="hari_tanggal">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Shift</label>
+                                            <select id="shift">
+                                                <option value="">Pilih Shift</option>
+                                                <option value="I">I</option>
+                                                <option value="II">II</option>
+                                                <option value="III">III</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Jam Mulai</label>
+                                            <input type="time" id="jam_mulai">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Jam Selesai</label>
+                                            <input type="time" id="jam_selesai">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Team Card -->
+                            <div class="section-card">
+                                <div class="section-header">Team</div>
+                                <div class="section-content">
+                                    <div class="operator-grid" id="teamGrid">
+                                        <div class="operator-item">
+                                            <label>1</label>
+                                            <input type="text" placeholder="Nama Team 1">
+                                            <button type="button" class="btn-remove-team" onclick="removeTeamRow(this)" title="Hapus Team">🗑️</button>
+                                        </div>
+                                        <div class="operator-item">
+                                            <label>2</label>
+                                            <input type="text" placeholder="Nama Team 2">
+                                            <button type="button" class="btn-remove-team" onclick="removeTeamRow(this)" title="Hapus Team">🗑️</button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn-add-row" onclick="addTeamRow()">+ Tambah Team</button>
+                                </div>
+                            </div>
+
+                            <!-- Materials Table Card -->
+                            <div class="section-card">
+                                <div class="section-header">Daftar Bahan Baku dan Hasil Produksi</div>
+                                <div class="section-content">
+                                    <div class="materials-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 20%;">BAHAN</th>
+                                                    <th style="width: 15%;">SATUAN</th>
+                                                    <th style="width: 20%;">MASUK</th>
+                                                    <th style="width: 20%;">KELUAR</th>
+                                                    <th style="width: 20%;">SISA</th>
+                                                    <th style="width: 5%;">AKSI</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="materialsTableBody">
+                                                <tr class="material-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="TSG" placeholder="Nama Bahan">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0" readonly></td>
+                                                    <td>
+                                                        <button type="button" class="btn-remove-row" onclick="removeMaterialRow(this)" title="Hapus Baris">🗑️</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="material-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="TSG REJECT" placeholder="Nama Bahan">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0" readonly></td>
+                                                    <td>
+                                                        <button type="button" class="btn-remove-row" onclick="removeMaterialRow(this)" title="Hapus Baris">🗑️</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="material-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="FILTER" placeholder="Nama Bahan">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0" readonly></td>
+                                                    <td>
+                                                        <button type="button" class="btn-remove-row" onclick="removeMaterialRow(this)" title="Hapus Baris">🗑️</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="material-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="AMBRI" placeholder="Nama Bahan">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0" readonly></td>
+                                                    <td>
+                                                        <button type="button" class="btn-remove-row" onclick="removeMaterialRow(this)" title="Hapus Baris">🗑️</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="material-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="CTP" placeholder="Nama Bahan">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                    <td><input type="text" class="input-cell" placeholder="0" readonly></td>
+                                                    <td>
+                                                        <button type="button" class="btn-remove-row" onclick="removeMaterialRow(this)" title="Hapus Baris">🗑️</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <button type="button" class="btn-add-row" onclick="addMaterialRow()">+ Tambah Bahan</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Waste Materials Table Card -->
+                            <div class="section-card">
+                                <div class="section-header">Daftar Waste Materials</div>
+                                <div class="section-content">
+                                    <div class="materials-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 50%;">WASTE</th>
+                                                    <th style="width: 15%;">SATUAN</th>
+                                                    <th style="width: 35%;">KELUAR</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="wasteTableBody">
+                                                <tr class="waste-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="WASTE BATANG" placeholder="Nama Waste">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                </tr>
+                                                <tr class="waste-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="WASTE RAJANG" placeholder="Nama Waste">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                </tr>
+                                                <tr class="waste-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="WASTE AMBRI / FILTER" placeholder="Nama Waste">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                </tr>
+                                                <tr class="waste-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="WOL / DEBU" placeholder="Nama Waste">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                </tr>
+                                                <tr class="waste-row">
+                                                    <td class="material-name">
+                                                        <input type="text" class="input-cell material-name-input" value="SPARATOR" placeholder="Nama Waste">
+                                                    </td>
+                                                    <td>
+                                                        <select class="input-cell unit-select">
+                                                            <option value="Kg">Kg</option>
+                                                            <option value="Batang">Batang</option>
+                                                            <option value="Pcs">Pcs</option>
+                                                            <option value="Roll">Roll</option>
+                                                            <option value="Sak">Sak</option>
+                                                            <option value="Liter">Liter</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="input-cell" placeholder="0"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Results Card -->
+                            <div class="section-card">
+                                <div class="section-header">Hasil Produksi</div>
+                                <div class="section-content">
+                                    <div class="result-grid">
+                                        <div class="result-item">
+                                            <label>HASIL:</label>
+                                            <input type="number" id="hasil_trey" placeholder="Jumlah">
+                                            <span class="unit">TREY</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notes Card -->
+                            <div class="section-card">
+                                <div class="section-header">Catatan</div>
+                                <div class="section-content">
+                                    <div class="form-group">
+                                        <label>Keterangan</label>
+                                        <textarea id="keterangan" placeholder="Masukkan keterangan tambahan..." rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- Bandrol Form -->
+                        <div class="form-section" id="bandrolForm" style="display: none;">
+                            <!-- Bandrol Form Type Selector -->
+                            <div class="section-card">
+                                <div class="section-header">Jenis Laporan Bandrol</div>
+                                <div class="section-content">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Pilih Jenis Laporan</label>
+                                            <select id="bandrolType" onchange="switchBandrolForm()">
+                                                <option value="">Pilih Jenis Laporan</option>
+                                                <option value="form">LAPORAN FORM BANDROL</option>
+                                                <option value="pita">LAPORAN BANDROL PITA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bandrol Form Type 1: LAPORAN FORM BANDROL -->
+                            <div id="bandrolFormType1" style="display: none;">
+                                <!-- Header Info -->
+                                <div class="section-card">
+                                    <div class="section-header">Informasi Dasar</div>
+                                    <div class="section-content">
+                                        <div class="form-grid">
+                                            <div class="form-group">
+                                                <label>Pengawas</label>
+                                                <input type="text" id="pengawas" placeholder="Nama Pengawas">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tanggal</label>
+                                                <input type="date" id="tanggal_bandrol">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Penanggung Jawab</label>
+                                                <input type="text" id="penanggung_jawab" placeholder="Nama Penanggung Jawab">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Shift</label>
+                                                <select id="shift_bandrol">
+                                                    <option value="">Pilih Shift</option>
+                                                    <option value="I">I</option>
+                                                    <option value="II">II</option>
+                                                    <option value="III">III</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bandrol Table -->
+                                <div class="section-card">
+                                    <div class="section-header">Data Bandrol</div>
+                                    <div class="section-content">
+                                        <div class="bandrol-table">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 10%;">NO</th>
+                                                        <th style="width: 35%;">BANDROL</th>
+                                                        <th style="width: 20%;">SISA</th>
+                                                        <th style="width: 15%;">TTD</th>
+                                                        <th style="width: 20%;">KETERANGAN</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="bandrolTableBody">
+                                                    <tr class="bandrol-row">
+                                                        <td><input type="text" class="input-cell" value="1" readonly></td>
+                                                        <td><input type="text" class="input-cell" placeholder="Contoh: 19. bendel Pita taratoba"></td>
+                                                        <td><input type="text" class="input-cell" placeholder="Contoh: Sisa pita 600 keping"></td>
+                                                        <td><input type="text" class="input-cell" placeholder="TTD"></td>
+                                                        <td><textarea class="input-cell" placeholder="Keterangan/perhitungan" rows="2"></textarea></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <button type="button" class="btn-add-row" onclick="addBandrolRow()">+ Tambah</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bandrol Form Type 2: LAPORAN BANDROL PITA -->
+                            <div id="bandrolFormType2" style="display: none;">
+                                <!-- Header Info -->
+                                <div class="section-card">
+                                    <div class="section-header">Informasi Dasar</div>
+                                    <div class="section-content">
+                                        <div class="form-grid">
+                                            <div class="form-group">
+                                                <label>Pengawas</label>
+                                                <input type="text" id="pengawas_pita" placeholder="Nama Pengawas">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Merk</label>
+                                                <div class="static-value">SKY Click</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Hari/Tanggal</label>
+                                                <input type="date" id="tanggal_pita">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Jasa</label>
+                                                <div class="static-value">Pita</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pita Table -->
+                                <div class="section-card">
+                                    <div class="section-header">Data Pita</div>
+                                    <div class="section-content">
+                                        <div class="pita-table">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 6%;">NO</th>
+                                                        <th style="width: 32%;">NAMA</th>
+                                                        <th style="width: 17%;">JUMLAH AMBIL PITA</th>
+                                                        <th style="width: 15%;">TOTAL</th>
+                                                        <th style="width: 12%;">LEBIH</th>
+                                                        <th style="width: 12%;">KURANG</th>
+                                                        <th style="width: 6%;">HAPUS</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="pitaTableBody">
+                                                    <tr class="pita-row">
+                                                        <td><input type="text" class="input-cell" value="1" readonly></td>
+                                                        <td><input type="text" class="input-cell" value="Ahmad Rizki"></td>
+                                                        <td><input type="number" class="input-cell" placeholder="0"></td>
+                                                        <td>
+                                                            <div style="display: flex; gap: 4px; align-items: center;">
+                                                                <input type="number" class="input-cell" placeholder="0" style="flex: 1;">
+                                                                <select class="input-cell" style="width: 100px;">
+                                                                    <option value="Ball">Ball</option>
+                                                                    <option value="Press">Press</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                        <td><input type="number" class="input-cell" placeholder="0"></td>
+                                                        <td><input type="number" class="input-cell" placeholder="0"></td>
+                                                        <td><button type="button" class="btn-delete" onclick="removePitaRow(this)" title="Hapus Baris">🗑️</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <button type="button" class="btn-add-row" onclick="addPitaRow()">+ Tambah</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- Extra spacing for floating buttons -->
+                        <div style="height: 100px;"></div>
+                        </div>
+
+                        <!-- Floating Action Buttons -->
+                        <div class="floating-actions">
+                            <button class="fab secondary" onclick="clearForm()" title="Reset Form">🗑️</button>
+                            <button class="fab" onclick="printForm()" title="Print Form">🖨️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Machine configurations
+        const machineConfigs = {
+            'MK8': {
+                name: 'MK8',
+                production: 'SKY Klick',
+                defaultMaterials: {
+                    'TSG': '20 (400)',
+                    'FILTER': '1+1.25 + 19T (59)',
+                    'AMBRI': '1,2575 Roll (23.75)',
+                    'CTP': '0.75+29 (11.95)'
+                }
+            },
+            'GARANT': {
+                name: 'Garant',
+                production: 'SKY Klick',
+                defaultMaterials: {
+                    'TSG': '15 (200)',
+                    'FILTER': '11 (42.35)',
+                    'AMBRI': '3.05 + 3R / 16.55',
+                    'CTP': '4.20 + 1R / 9.8'
+                }
+            },
+            'HLP_BEVEL': {
+                name: 'HLP Bevel',
+                production: 'SKY Klick',
+                defaultMaterials: {
+                    'TSG': '20 Sak (400)',
+                    'FILTER': '15T (57.75)',
+                    'AMBRI': '2.85+5R (25.35)',
+                    'CTP': '2.70 + 2R (13.9)'
+                }
+            },
+            'HLP_SOLO': {
+                name: 'HLP Solo',
+                production: 'SKY Klick',
+                defaultMaterials: {
+                    'TSG': '15 sak',
+                    'FILTER': '11.Trey + 3,15 (95,5)',
+                    'AMBRI': '3R + 1.70 (15.2)',
+                    'CTP': '1R + 2.65 (R.25)'
+                }
+            },
+            'BANDROL': {
+                name: 'Bandrol',
+                production: 'SKY Klick',
+                defaultMaterials: {
+                    'TSG': '18 (350)',
+                    'FILTER': '12 (45.5)',
+                    'AMBRI': '2.5 + 2R (20.5)',
+                    'CTP': '3.0 + 1R (12.0)'
+                }
+            },
+            'WRAPPING': {
+                name: 'Wrapping',
+                production: 'SKY Klick',
+                defaultMaterials: {
+                    'TSG': '16 (300)',
+                    'FILTER': '10 (38.5)',
+                    'AMBRI': '2.2 + 1R (18.2)',
+                    'CTP': '2.8 + 1R (10.8)'
+                }
+            }
+        };
+
+        let currentMachine = null;
+        let scanAttempts = 0;
+        let scanInterval = null;
+
+        // Indonesian names for pita table
+        const indonesianNames = [
+            'Ahmad Rizki',
+            'Siti Nurhaliza', 
+            'Bambang Sutejo',
+            'Dewi Sartika',
+            'Hendra Gunawan',
+            'Ratna Sari',
+            'Joko Widodo',
+            'Sri Wahyuni',
+            'Agus Setiawan',
+            'Maya Indah'
+        ];
+        let currentNameIndex = 0;
+
+        function getRandomIndonesianName() {
+            const name = indonesianNames[currentNameIndex];
+            currentNameIndex = (currentNameIndex + 1) % indonesianNames.length;
+            return name;
+        }
+
+        // Screen management
+        function showScreen(screenId) {
+            document.getElementById('scannerScreen').style.display = 'none';
+            document.getElementById('machineSelectScreen').style.display = 'none';
+            document.getElementById('formScreen').style.display = 'none';
+            document.getElementById('mainToolbar').style.display = 'none';
+            
+            document.getElementById(screenId).style.display = 'flex';
+            
+            // Show toolbar only for form screen
+            if (screenId === 'formScreen') {
+                document.getElementById('mainToolbar').style.display = 'flex';
+            }
+        }
+
+        // Scanner functions
+        function startScanning() {
+            document.getElementById('scannerStatus').textContent = 'Memulai scan...';
+            scanAttempts = 0;
+            
+            // Disable scan button during scanning
+            const scanBtn = document.querySelector('.scanner-btn.primary');
+            if (scanBtn) {
+                scanBtn.disabled = true;
+                scanBtn.textContent = 'Scanning...';
+            }
+            
+            // Simulate scanning process
+            scanInterval = setInterval(() => {
+                scanAttempts++;
+                const progress = Math.round((scanAttempts / 10) * 100);
+                document.getElementById('scannerStatus').textContent = `Scanning... ${progress}%`;
+                
+                if (scanAttempts >= 10) {
+                    clearInterval(scanInterval);
+                    // Simulate successful scan with random machine
+                    const machines = ['MK8', 'GARANT', 'HLP_BEVEL', 'HLP_SOLO', 'BANDROL', 'WRAPPING'];
+                    const detectedMachine = machines[Math.floor(Math.random() * machines.length)];
+                    document.getElementById('scannerStatus').textContent = `Mesin terdeteksi: ${detectedMachine}`;
+                    
+                    // Re-enable scan button
+                    if (scanBtn) {
+                        scanBtn.disabled = false;
+                        scanBtn.textContent = 'Mulai Scan';
+                    }
+                    
+                    setTimeout(() => {
+                        // Add success animation to scanner frame
+                        const scannerFrame = document.querySelector('.scanner-frame');
+                        if (scannerFrame) {
+                            scannerFrame.style.borderColor = '#28a745';
+                            scannerFrame.style.boxShadow = '0 0 20px rgba(40, 167, 69, 0.5)';
+                            
+                            // Reset animation after 2 seconds
+                            setTimeout(() => {
+                                scannerFrame.style.borderColor = '#007AFF';
+                                scannerFrame.style.boxShadow = 'none';
+                            }, 2000);
+                        }
+                        
+                        // Auto-select the detected machine and go directly to form
+                        selectMachine(detectedMachine);
+                        
+                        // Show notification about detected machine
+                        const machineConfig = machineConfigs[detectedMachine];
+                        const machineName = machineConfig ? machineConfig.name : detectedMachine;
+                        showToast(`Mesin ${machineName} terdeteksi!`, 'success');
+                    }, 1500);
+                }
+            }, 1000);
+        }
+
+        function showMachineSelection() {
+            showScreen('machineSelectScreen');
+        }
+
+        function highlightDetectedMachine(machineName) {
+            // Clear all selections
+            document.querySelectorAll('.machine-option').forEach(option => {
+                option.style.background = '';
+            });
+            
+            // Highlight the detected machine
+            const radioButton = document.querySelector(`input[value="${machineName}"]`);
+            if (radioButton) {
+                radioButton.checked = true;
+                const option = radioButton.closest('.machine-option');
+                if (option) {
+                    option.style.background = '#e3f2fd';
+                }
+            }
+            
+            // Update toolbar title for detected machine
+            updateToolbarTitle(machineName);
+        }
+
+        function selectMachine(machineName) {
+            currentMachine = machineName;
+            const config = machineConfigs[machineName];
+            
+            // Select the corresponding radio button
+            const radioButton = document.querySelector(`input[value="${machineName}"]`);
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+            
+            // Update toolbar title based on machine category
+            updateToolbarTitle(machineName);
+            
+            // Check if it's a bandrol machine
+            if (machineName === 'BANDROL') {
+                showBandrolForm();
+            } else {
+                showMakerForm();
+            }
+            
+            // Fill form with machine data (for maker form)
+            if (machineName !== 'BANDROL') {
+                document.getElementById('mesin').value = config.name;
+                document.getElementById('produksi').value = config.production;
+                
+                // Pre-fill material defaults
+                Object.entries(config.defaultMaterials).forEach(([material, value]) => {
+                    const rows = document.querySelectorAll('.material-row');
+                    rows.forEach(row => {
+                        const materialNameInput = row.querySelector('.material-name-input');
+                        if (materialNameInput && materialNameInput.value === material) {
+                            const masukInput = row.querySelector('td:nth-child(3) input');
+                            if (masukInput) {
+                                masukInput.value = value;
+                            }
+                        }
+                    });
+                });
+            }
+            
+            showScreen('formScreen');
+            updateDateTime();
+            setDefaultDate();
+            autoCalculateSisa();
+        }
+
+        function updateToolbarTitle(machineName) {
+            const toolbarTitle = document.getElementById('toolbarTitle');
+            let title = 'MAKER'; // Default title
+            
+            // Determine category based on machine name
+            if (machineName === 'MK8' || machineName === 'GARANT') {
+                title = 'MAKER';
+            } else if (machineName === 'HLP_BEVEL' || machineName === 'HLP_SOLO') {
+                title = 'HLP';
+            } else if (machineName === 'BANDROL') {
+                title = 'BANDROL';
+            } else if (machineName === 'WRAPPING') {
+                title = 'WRAPPING';
+            }
+            
+            toolbarTitle.textContent = title;
+        }
+
+        function showMakerForm() {
+            document.getElementById('makerForm').style.display = 'block';
+            document.getElementById('bandrolForm').style.display = 'none';
+        }
+
+        function showBandrolForm() {
+            document.getElementById('makerForm').style.display = 'none';
+            document.getElementById('bandrolForm').style.display = 'block';
+        }
+
+        function switchBandrolForm() {
+            const bandrolType = document.getElementById('bandrolType').value;
+            document.getElementById('bandrolFormType1').style.display = 'none';
+            document.getElementById('bandrolFormType2').style.display = 'none';
+            
+            if (bandrolType === 'form') {
+                document.getElementById('bandrolFormType1').style.display = 'block';
+                // Update toolbar title for specific bandrol form type
+                document.getElementById('toolbarTitle').textContent = 'BANDROL - FORM';
+            } else if (bandrolType === 'pita') {
+                document.getElementById('bandrolFormType2').style.display = 'block';
+                // Update toolbar title for specific bandrol form type
+                document.getElementById('toolbarTitle').textContent = 'BANDROL - PITA';
+            } else {
+                // Reset to general BANDROL title
+                document.getElementById('toolbarTitle').textContent = 'BANDROL';
+            }
+        }
+
+        function addBandrolRow() {
+            const tbody = document.getElementById('bandrolTableBody');
+            const rowCount = tbody.children.length + 1;
+            
+            const newRow = document.createElement('tr');
+            newRow.className = 'bandrol-row';
+            newRow.innerHTML = `
+                <td><input type="text" class="input-cell" value="${rowCount}" readonly></td>
+                <td><input type="text" class="input-cell" placeholder="Contoh: 19. bendel Pita taratoba"></td>
+                <td><input type="text" class="input-cell" placeholder="Contoh: Sisa pita 600 keping"></td>
+                <td><input type="text" class="input-cell" placeholder="TTD"></td>
+                <td><textarea class="input-cell" placeholder="Keterangan/perhitungan" rows="2"></textarea></td>
+            `;
+            
+            tbody.appendChild(newRow);
+        }
+
+        function addPitaRow() {
+            const tbody = document.getElementById('pitaTableBody');
+            const rowCount = tbody.children.length + 1;
+            const randomName = getRandomIndonesianName();
+            
+            const newRow = document.createElement('tr');
+            newRow.className = 'pita-row';
+            newRow.innerHTML = `
+                <td><input type="text" class="input-cell" value="${rowCount}" readonly></td>
+                <td><input type="text" class="input-cell" value="${randomName}"></td>
+                <td><input type="number" class="input-cell" placeholder="0"></td>
+                <td>
+                    <div style="display: flex; gap: 4px; align-items: center;">
+                        <input type="number" class="input-cell" placeholder="0" style="flex: 1;">
+                        <select class="input-cell" style="width: 100px;">
+                            <option value="Ball">Ball</option>
+                            <option value="Press">Press</option>
+                        </select>
+                    </div>
+                </td>
+                <td><input type="number" class="input-cell" placeholder="0"></td>
+                <td><input type="number" class="input-cell" placeholder="0"></td>
+                <td><button type="button" class="btn-delete" onclick="removePitaRow(this)" title="Hapus Baris">🗑️</button></td>
+            `;
+            
+            tbody.appendChild(newRow);
+        }
+
+        function removePitaRow(button) {
+            const row = button.closest('tr');
+            if (row) {
+                row.remove();
+                // Renumber remaining rows and update names
+                const tbody = document.getElementById('pitaTableBody');
+                const rows = tbody.querySelectorAll('tr');
+                
+                // Reset name index to start from beginning
+                currentNameIndex = 0;
+                
+                rows.forEach((row, index) => {
+                    const noInput = row.querySelector('td:first-child input');
+                    const nameInput = row.querySelector('td:nth-child(2) input');
+                    
+                    if (noInput) {
+                        noInput.value = index + 1;
+                    }
+                    if (nameInput) {
+                        nameInput.value = getRandomIndonesianName();
+                    }
+                });
+            }
+        }
+
+        function addMaterialRow() {
+            const tbody = document.getElementById('materialsTableBody');
+            
+            const newRow = document.createElement('tr');
+            newRow.className = 'material-row';
+            newRow.innerHTML = `
+                <td class="material-name">
+                    <input type="text" class="input-cell material-name-input" placeholder="Nama Bahan">
+                </td>
+                <td>
+                    <select class="input-cell unit-select">
+                        <option value="Kg">Kg</option>
+                        <option value="Batang">Batang</option>
+                        <option value="Pcs">Pcs</option>
+                        <option value="Roll">Roll</option>
+                        <option value="Sak">Sak</option>
+                        <option value="Liter">Liter</option>
+                    </select>
+                </td>
+                <td><input type="text" class="input-cell" placeholder="0"></td>
+                <td><input type="text" class="input-cell" placeholder="0"></td>
+                <td><input type="text" class="input-cell" placeholder="0" readonly></td>
+                <td>
+                    <button type="button" class="btn-remove-row" onclick="removeMaterialRow(this)" title="Hapus Baris">🗑️</button>
+                </td>
+            `;
+            
+            tbody.appendChild(newRow);
+            
+            // Add event listeners for auto calculation
+            const inputs = newRow.querySelectorAll('.input-cell');
+            const masukInput = inputs[2];
+            const keluarInput = inputs[3];
+            const sisaInput = inputs[4];
+            
+            function calculateSisa() {
+                const masuk = parseFloat(masukInput.value) || 0;
+                const keluar = parseFloat(keluarInput.value) || 0;
+                const sisa = masuk - keluar;
+                if (sisa >= 0) {
+                    sisaInput.value = sisa.toFixed(2);
+                }
+            }
+            
+            masukInput.addEventListener('input', calculateSisa);
+            keluarInput.addEventListener('input', calculateSisa);
+        }
+
+        function removeMaterialRow(button) {
+            const row = button.closest('tr');
+            if (row) {
+                row.remove();
+            }
+        }
+
+        function addTeamRow() {
+            const teamGrid = document.getElementById('teamGrid');
+            
+            // Find the highest team number currently existing
+            const existingTeams = teamGrid.querySelectorAll('.operator-item');
+            let maxTeamNumber = 0;
+            
+            existingTeams.forEach(team => {
+                const label = team.querySelector('label');
+                if (label) {
+                    const teamNumber = parseInt(label.textContent);
+                    if (teamNumber > maxTeamNumber) {
+                        maxTeamNumber = teamNumber;
+                    }
+                }
+            });
+            
+            const newTeamNumber = maxTeamNumber + 1;
+            
+            const newTeamItem = document.createElement('div');
+            newTeamItem.className = 'operator-item';
+            newTeamItem.innerHTML = `
+                <label>${newTeamNumber}</label>
+                <input type="text" placeholder="Nama Team ${newTeamNumber}">
+                <button type="button" class="btn-remove-team" onclick="removeTeamRow(this)" title="Hapus Team">🗑️</button>
+            `;
+            
+            teamGrid.appendChild(newTeamItem);
+        }
+
+        function removeTeamRow(button) {
+            const teamItem = button.closest('.operator-item');
+            if (teamItem) {
+                teamItem.remove();
+                // Re-number remaining teams
+                const teamItems = document.querySelectorAll('.operator-item');
+                teamItems.forEach((item, index) => {
+                    const label = item.querySelector('label');
+                    if (label) {
+                        label.textContent = index + 1;
+                    }
+                });
+            }
+        }
+
+        function addWasteRow() {
+            const tbody = document.getElementById('wasteTableBody');
+            
+            const newRow = document.createElement('tr');
+            newRow.className = 'waste-row';
+            newRow.innerHTML = `
+                <td class="material-name">
+                    <input type="text" class="input-cell material-name-input" placeholder="Nama Waste">
+                </td>
+                <td>
+                    <select class="input-cell unit-select">
+                        <option value="Kg">Kg</option>
+                        <option value="Batang">Batang</option>
+                        <option value="Pcs">Pcs</option>
+                        <option value="Roll">Roll</option>
+                        <option value="Sak">Sak</option>
+                        <option value="Liter">Liter</option>
+                    </select>
+                </td>
+                <td><input type="text" class="input-cell" placeholder="0"></td>
+            `;
+            
+            tbody.appendChild(newRow);
+        }
+
+        function removeWasteRow(button) {
+            const row = button.closest('tr');
+            if (row) {
+                row.remove();
+            }
+        }
+
+        function backToScanner() {
+            showScreen('scannerScreen');
+            document.getElementById('scannerStatus').textContent = 'Siap untuk scan barcode mesin';
+            if (scanInterval) {
+                clearInterval(scanInterval);
+            }
+        }
+
+        function backToMachineSelection() {
+            showScreen('machineSelectScreen');
+            // Reset toolbar title to default
+            document.getElementById('toolbarTitle').textContent = 'MAKER';
+        }
+
+        // Update current date and time
+        function updateDateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('currentDateTime').textContent = timeString;
+        }
+
+        // Set today's date as default
+        function setDefaultDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('hari_tanggal').value = today;
+            
+            // Set default time (current time for start, +8 hours for end)
+            const now = new Date();
+            const startTime = now.toTimeString().slice(0, 5);
+            const endTime = new Date(now.getTime() + 8 * 60 * 60 * 1000).toTimeString().slice(0, 5);
+            
+            document.getElementById('jam_mulai').value = startTime;
+            document.getElementById('jam_selesai').value = endTime;
+        }
+
+        // Auto calculate sisa (remaining materials)
+        function autoCalculateSisa() {
+            // Calculate for material rows
+            const materialRows = document.querySelectorAll('.material-row');
+            materialRows.forEach(row => {
+                const inputs = row.querySelectorAll('.input-cell');
+                const masukInput = inputs[2]; // Index 2 for MASUK
+                const keluarInput = inputs[3]; // Index 3 for KELUAR
+                const sisaInput = inputs[4]; // Index 4 for SISA
+                
+                if (masukInput && keluarInput && sisaInput) {
+                    function calculateSisa() {
+                        const masuk = parseFloat(masukInput.value) || 0;
+                        const keluar = parseFloat(keluarInput.value) || 0;
+                        const sisa = masuk - keluar;
+                        if (sisa >= 0) {
+                            sisaInput.value = sisa.toFixed(2);
+                        }
+                    }
+                    
+                    masukInput.addEventListener('input', calculateSisa);
+                    keluarInput.addEventListener('input', calculateSisa);
+                }
+            });
+        }
+
+        // Haptic feedback simulation for mobile-like experience
+        function hapticFeedback() {
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Add haptic feedback to buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('button, .fab, .machine-card')) {
+                hapticFeedback();
+            }
+        });
+
+        // Clear form function
+        function clearForm() {
+            if (confirm('Apakah Anda yakin ingin mengosongkan semua data?')) {
+                // Clear all inputs
+                document.querySelectorAll('input:not([type="date"]), select, textarea').forEach(element => {
+                    element.value = '';
+                });
+                setDefaultDate();
+                
+                // Clear team items (keep first 5, remove others)
+                const teamItems = document.querySelectorAll('.operator-item');
+                teamItems.forEach((item, index) => {
+                    if (index >= 5) { // Remove items beyond first 5
+                        item.remove();
+                    } else {
+                        // Clear input in first 5 items
+                        const input = item.querySelector('input');
+                        if (input) {
+                            input.value = '';
+                        }
+                    }
+                });
+
+                // Re-number remaining teams
+                const remainingTeamItems = document.querySelectorAll('.operator-item');
+                remainingTeamItems.forEach((item, index) => {
+                    const label = item.querySelector('label');
+                    if (label) {
+                        label.textContent = index + 1;
+                    }
+                });
+
+                // Clear bandrol tables
+                const bandrolRows = document.querySelectorAll('.bandrol-row');
+                bandrolRows.forEach((row, index) => {
+                    if (index > 0) { // Keep first row, remove others
+                        row.remove();
+                    } else {
+                        // Clear first row
+                        const inputs = row.querySelectorAll('input, textarea');
+                        inputs.forEach(input => {
+                            if (input.type === 'text' && input.readOnly) {
+                                input.value = '1';
+                            } else {
+                                input.value = '';
+                            }
+                        });
+                    }
+                });
+                
+                const pitaRows = document.querySelectorAll('.pita-row');
+                pitaRows.forEach((row, index) => {
+                    if (index > 0) { // Keep first row, remove others
+                        row.remove();
+                    } else {
+                        // Clear first row
+                        const inputs = row.querySelectorAll('input');
+                        inputs.forEach(input => {
+                            if (input.type === 'text' && input.readOnly) {
+                                input.value = '1';
+                            } else {
+                                input.value = '';
+                            }
+                        });
+                    }
+                });
+
+                // Clear waste rows (keep first 5, remove others)
+                const wasteRows = document.querySelectorAll('.waste-row');
+                wasteRows.forEach((row, index) => {
+                    if (index >= 5) { // Remove items beyond first 5
+                        row.remove();
+                    } else {
+                        // Clear inputs in first 5 items
+                        const inputs = row.querySelectorAll('input');
+                        inputs.forEach(input => {
+                            if (input.type === 'text' && input.readOnly) {
+                                // Keep readonly inputs as is
+                            } else {
+                                input.value = '';
+                            }
+                        });
+                    }
+                });
+                
+                // Re-fill machine defaults (for maker form)
+                if (currentMachine && currentMachine !== 'BANDROL') {
+                    const config = machineConfigs[currentMachine];
+                    document.getElementById('mesin').value = config.name;
+                    document.getElementById('produksi').value = config.production;
+                    
+                    Object.entries(config.defaultMaterials).forEach(([material, value]) => {
+                        const rows = document.querySelectorAll('.material-row');
+                        rows.forEach(row => {
+                            const materialNameInput = row.querySelector('.material-name-input');
+                            if (materialNameInput && materialNameInput.value === material) {
+                                const masukInput = row.querySelector('td:nth-child(3) input');
+                                if (masukInput) {
+                                    masukInput.value = value;
+                                }
+                            }
+                        });
+                    });
+                }
+                
+                showToast('Form berhasil dikosongkan');
+            }
+        }
+
+        // Save form function
+        function saveForm() {
+            const mesin = document.getElementById('mesin').value;
+            const shift = document.getElementById('shift').value;
+            const produksi = document.getElementById('produksi').value;
+
+            if (!mesin || !shift || !produksi) {
+                showToast('Mohon lengkapi data dasar terlebih dahulu!', 'error');
+                return;
+            }
+
+            // Simulate API call
+            showToast('Menyimpan data...', 'loading');
+            
+            setTimeout(() => {
+                showToast('Data berhasil disimpan!', 'success');
+            }, 1500);
+        }
+
+        // Print form function
+        function printForm() {
+            showToast('Mempersiapkan dokumen untuk dicetak...', 'loading');
+            
+            setTimeout(() => {
+                window.print();
+            }, 1000);
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'error' ? '#ff3b30' : type === 'success' ? '#34c759' : type === 'loading' ? '#007AFF' : '#8e8e93'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 20px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 10000;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+                transition: all 0.3s ease;
+            `;
+            
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Animation
+            requestAnimationFrame(() => {
+                toast.style.transform = 'translateX(-50%) translateY(0)';
+            });
+            
+            // Auto remove
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(-100px)';
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, type === 'loading' ? 1500 : 3000);
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start with scanner screen
+            showScreen('scannerScreen');
+            
+            // Add event listeners for radio buttons
+            document.addEventListener('change', function(e) {
+                if (e.target.type === 'radio' && e.target.name === 'machine') {
+                    selectMachine(e.target.value);
+                }
+            });
+            
+            // Welcome message
+            setTimeout(() => {
+                showToast('Selamat datang di Form MAKER', 'success');
+            }, 500);
+        });
+
+        // Handle form focus for better UX
+        document.addEventListener('focusin', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                e.target.parentElement.style.transform = 'scale(1.02)';
+                e.target.parentElement.style.transition = 'transform 0.2s ease';
+            }
+        });
+
+        document.addEventListener('focusout', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                e.target.parentElement.style.transform = 'scale(1)';
+            }
+        });
+    </script>
+</body>
+</html> 

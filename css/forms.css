@@ -1,0 +1,446 @@
+/* Production Form Specific Styles */
+
+/* Form Layout for Landscape Tablet */
+.form-wrapper {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto auto;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header with Company Info */
+.form-header {
+    grid-row: 1;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-header h2 {
+    font-size: 1.8rem;
+    color: #666;
+    font-weight: normal;
+}
+
+/* Production Info Section - Two Column Layout */
+.production-info {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.production-info-left, .production-info-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field-group label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.field-group input, .field-group select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.field-group input:focus, .field-group select:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Names List Styling */
+.names-list {
+    margin-top: 10px;
+}
+
+.names-list label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.name-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+.name-item span {
+    font-weight: bold;
+    min-width: 25px;
+    color: #2a5298;
+}
+
+.name-item input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+/* Material Table - Full Width */
+.material-table {
+    grid-row: 3;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.material-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.material-table th {
+    background: #2a5298;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 1px solid #1e3c72;
+}
+
+.material-table td {
+    padding: 12px 8px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.material-table td:first-child {
+    text-align: left;
+    font-weight: bold;
+    background: #f8f9fa;
+    color: #333;
+}
+
+.material-table input {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    background: transparent;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.material-table input:focus {
+    outline: none;
+    background: #e8f4fd;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 2px rgba(42, 82, 152, 0.2);
+}
+
+/* Waste Section - Grid Layout */
+.waste-section {
+    grid-row: 4;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.waste-section h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.waste-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.waste-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.waste-item label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    min-width: 140px;
+    text-transform: uppercase;
+}
+
+.waste-item input {
+    flex: 1;
+    max-width: 100px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    text-align: center;
+}
+
+.waste-item span {
+    font-weight: bold;
+    color: #666;
+    min-width: 30px;
+}
+
+/* Result Section - Highlighted */
+.result-section {
+    grid-row: 5;
+    padding: 25px;
+    background: linear-gradient(135deg, #e8f4fd, #d1ecf1);
+    border-radius: 8px;
+    border: 2px solid #bee5eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.result-section .field-group {
+    margin-bottom: 0;
+}
+
+.result-section label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2a5298;
+    text-transform: uppercase;
+}
+
+.result-section input {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2a5298;
+    background: white;
+    border: 2px solid #bee5eb;
+    padding: 12px 15px;
+}
+
+/* Notes Section */
+.notes-section {
+    grid-row: 6;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.notes-section .field-group {
+    margin-bottom: 0;
+}
+
+.notes-section label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.notes-section textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.notes-section textarea:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+}
+
+/* Signature Section */
+.signature-section {
+    grid-row: 7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.signature-box {
+    text-align: center;
+    padding: 25px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.signature-box:hover {
+    border-color: #2a5298;
+    background: #e8f4fd;
+}
+
+.signature-box label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.signature-line {
+    height: 3px;
+    background: #333;
+    margin: 25px 0;
+    border-radius: 2px;
+}
+
+.signature-box span {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Form Footer */
+.form-footer {
+    grid-row: 8;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #dee2e6;
+    color: #666;
+    font-size: 12px;
+    background: white;
+    border-radius: 0 0 8px 8px;
+}
+
+.form-footer span {
+    margin: 0 15px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Form Actions */
+.form-actions {
+    grid-row: 9;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Handwritten Input Enhancement */
+.handwritten {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.handwritten:focus {
+    background: #fff9c4 !important;
+}
+
+/* Responsive Design for Tablet Landscape */
+@media (max-width: 1024px) {
+    .form-wrapper {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .production-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .notes-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .signature-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .waste-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .form-wrapper {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .form-actions {
+        display: none;
+    }
+    
+    .material-table input {
+        border: none;
+        background: transparent;
+    }
+    
+    .waste-item input {
+        border: none;
+        background: transparent;
+    }
+    
+    .notes-section textarea {
+        border: none;
+        background: transparent;
+    }
+} 

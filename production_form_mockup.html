@@ -1,0 +1,1170 @@
+    <div class="tablet-frame">
+        <div class="tablet-screen">
+            <div class="status-bar">
+                <div class="status-left">
+                    <span>9:41</span>
+                </div>
+                <div class="status-right">
+                    <span>📶</span>
+                    <span>📶</span>
+                    <span>🔋 85%</span>
+                </div>
+            </div>
+            
+            <div class="app-container">
+                <div class="container">
+                    <div class="header">
+                        <div class="header-left">
+                            <button class="back-btn">←</button>
+                            <div class="header-title">
+                                <h1>MAKER</h1>
+                                <div class="company">CV. DELTA TOBACCO CIGARETTES</div>
+                            </div>
+                        </div>
+                        <div class="header-right">
+                            <span id="currentDateTime"></span>
+                            <button class="save-btn" onclick="saveForm()">Simpan</button>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <!-- Basic Info Card -->
+                        <div class="section-card">
+                            <div class="section-header">Informasi Dasar</div>
+                            <div class="section-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Hari/Tanggal</label>
+                                        <input type="date" id="hari_tanggal">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Shift</label>
+                                        <select id="shift">
+                                            <option value="">Pilih Shift</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mesin</label>
+                                        <input type="text" id="mesin" placeholder="Nama Mesin">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Produksi</label>
+                                        <input type="text" id="produksi" placeholder="Jenis Produksi">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Operator Card -->
+                        <div class="section-card">
+                            <div class="section-header">Operator</div>
+                            <div class="section-content">
+                                <div class="operator-grid">
+                                    <div class="operator-item">
+                                        <label>1</label>
+                                        <input type="text" placeholder="Nama Operator 1">
+                                    </div>
+                                    <div class="operator-item">
+                                        <label>2</label>
+                                        <input type="text" placeholder="Nama Operator 2">
+                                    </div>
+                                    <div class="operator-item">
+                                        <label>3</label>
+                                        <input type="text" placeholder="Nama Operator 3">
+                                    </div>
+                                    <div class="operator-item">
+                                        <label>4</label>
+                                        <input type="text" placeholder="Nama Operator 4">
+                                    </div>
+                                    <div class="operator-item">
+                                        <label>5</label>
+                                        <input type="text" placeholder="Nama Operator 5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Materials Table Card -->
+                        <div class="section-card">
+                            <div class="section-header">Daftar Bahan Baku dan Hasil Produksi</div>
+                            <div class="section-content">
+                                <div class="materials-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 25%;">BAHAN</th>
+                                                <th style="width: 25%;">MASUK</th>
+                                                <th style="width: 25%;">KELUAR</th>
+                                                <th style="width: 25%;">SISA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="material-row">
+                                                <td class="material-name">TSG</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                            </tr>
+                                            <tr class="material-row">
+                                                <td class="material-name">CTP</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                            </tr>
+                                            <tr class="material-row waste-section">
+                                                <td class="material-name">WASTE BATANG</td>
+                                                <td>-</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr class="material-row waste-section">
+                                                <td class="material-name">WASTE RAJANG</td>
+                                                <td>-</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr class="material-row waste-section">
+                                                <td class="material-name">WASTE AMBRI / FILTER</td>
+                                                <td>-</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr class="material-row waste-section">
+                                                <td class="material-name">WOL / DEBU</td>
+                                                <td>-</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr class="material-row waste-section">
+                                                <td class="material-name">SPARATOR</td>
+                                                <td>-</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td>-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results Card -->
+                        <div class="section-card">
+                            <div class="section-header">Hasil Produksi</div>
+                            <div class="section-content">
+                                <div class="result-grid">
+                                    <div class="result-item">
+                                        <label>HASIL:</label>
+                                        <input type="number" id="hasil_trey" placeholder="Jumlah">
+                                        <span class="unit">TREY</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>BERAT:</label>
+                                        <input type="number" id="hasil_berat" placeholder="0.00" step="0.01">
+                                        <span class="unit">Kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes Card -->
+                        <div class="section-card">
+                            <div class="section-header">Catatan</div>
+                            <div class="section-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Keterangan</label>
+                                        <textarea id="keterangan" placeholder="Masukkan keterangan tambahan..." rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Part Yang Diganti</label>
+                                        <textarea id="part_diganti" placeholder="Daftar part yang diganti..." rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Signature Card -->
+                        <div class="section-card">
+                            <div class="section-header">Tanda Tangan</div>
+                            <div class="section-content">
+                                <div class="signature-section">
+                                    <div class="signature-box">
+                                        <h4>Diajukan Oleh</h4>
+                                        <div class="signature-line"></div>
+                                        <p>(...........................)</p>
+                                    </div>
+                                    <div class="signature-box">
+                                        <h4>Menyetujui</h4>
+                                        <div class="signature-line"></div>
+                                        <p>(...........................)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Extra spacing for floating buttons -->
+                        <div style="height: 100px;"></div>
+                    </div>
+
+                    <!-- Floating Action Buttons -->
+                    <div class="floating-actions">
+                        <button class="fab secondary" onclick="clearForm()" title="Reset Form">🗑️</button>
+                        <button class="fab" onclick="printForm()" title="Print Form">🖨️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update current date and time
+        function updateDateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('currentDateTime').textContent = timeString;
+        }
+
+        // Set today's date as default
+        function setDefaultDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('hari_tanggal').value = today;
+        }
+
+        // Auto calculate sisa (remaining materials)
+        function autoCalculateSisa() {
+            const rows = document.querySelectorAll('.material-row:not(.waste-section)');
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('.input-cell');
+                const masukInput = inputs[0];
+                const keluarInput = inputs[1];
+                const sisaInput = inputs[2];
+                
+                if (masukInput && keluarInput && sisaInput) {
+                    function calculateSisa() {
+                        const masuk = parseFloat(masukInput.value) || 0;
+                        const keluar = parseFloat(keluarInput.value) || 0;
+                        const sisa = masuk - keluar;
+                        if (sisa >= 0) {
+                            sisaInput.value = sisa.toFixed(2);
+                        }
+                    }
+                    
+                    masukInput.addEventListener('input', calculateSisa);
+                    keluarInput.addEventListener('input', calculateSisa);
+                }
+            });
+        }
+
+        // Haptic feedback simulation for mobile-like experience
+        function hapticFeedback() {
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Add haptic feedback to buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('button, .fab')) {
+                hapticFeedback();
+            }
+        });
+
+        // Smooth scroll behavior
+        function smoothScroll(element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // Auto-save to localStorage (simulation)
+        function autoSave() {
+            const formData = {
+                mesin: document.getElementById('mesin').value,
+                shift: document.getElementById('shift').value,
+                produksi: document.getElementById('produksi').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // In a real app, this would sync with backend
+            console.log('Auto-saving...', formData);
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(autoSave, 30000);
+
+        // Clear form function
+        function clearForm() {
+            if (confirm('Apakah Anda yakin ingin mengosongkan semua data?')) {
+                document.querySelectorAll('input:not([type="date"]), select, textarea').forEach(element => {
+                    element.value = '';
+                });
+                setDefaultDate();
+                
+                // Show toast notification
+                showToast('Form berhasil dikosongkan');
+            }
+        }
+
+        // Save form function
+        function saveForm() {
+            const mesin = document.getElementById('mesin').value;
+            const shift = document.getElementById('shift').value;
+            const produksi = document.getElementById('produksi').value;
+
+            if (!mesin || !shift || !produksi) {
+                showToast('Mohon lengkapi data dasar terlebih dahulu!', 'error');
+                return;
+            }
+
+            // Simulate API call
+            showToast('Menyimpan data...', 'loading');
+            
+            setTimeout(() => {
+                showToast('Data berhasil disimpan!', 'success');
+            }, 1500);
+        }
+
+        // Print form function
+        function printForm() {
+            showToast('Mempersiapkan dokumen untuk dicetak...', 'loading');
+            
+            setTimeout(() => {
+                window.print();
+            }, 1000);
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'error' ? '#ff3b30' : type === 'success' ? '#34c759' : type === 'loading' ? '#007AFF' : '#8e8e93'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 20px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 10000;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+                transition: all 0.3s ease;
+            `;
+            
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Animation
+            requestAnimationFrame(() => {
+                toast.style.transform = 'translateX(-50%) translateY(0)';
+            });
+            
+            // Auto remove
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(-100px)';
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, type === 'loading' ? 1500 : 3000);
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            setDefaultDate();
+            autoCalculateSisa();
+            setInterval(updateDateTime, 1000); // Update every second
+            
+            // Welcome message
+            setTimeout(() => {
+                showToast('Selamat datang di Form MAKER', 'success');
+            }, 500);
+        });
+
+        // Handle form focus for better UX
+        document.addEventListener('focusin', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                e.target.parentElement.style.transform = 'scale(1.02)';
+                e.target.parentElement.style.transition = 'transform 0.2s ease';
+            }
+        });
+
+        document.addEventListener('focusout', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                e.target.parentElement.style.transform = 'scale(1)';
+            }
+        });
+    </script>" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                            </tr>
+                                            <tr class="material-row">
+                                                <td class="material-name">TSG REJECT</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                            </tr>
+                                            <tr class="material-row">
+                                                <td class="material-name">FILTER</td>
+                                                <td><input type="text" class="input-cell" placeholder="Batang"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Batang"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Batang"></td>
+                                            </tr>
+                                            <tr class="material-row">
+                                                <td class="material-name">AMBRI</td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                                                <td><input type="text" class="input-cell<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form MAKER - CV. Delta Tobacco Cigarettes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .tablet-frame {
+            width: 1024px;
+            height: 768px;
+            margin: 0 auto;
+            background: #2a2a2a;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tablet-screen {
+            width: 100%;
+            height: 100%;
+            background: #f5f5f7;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .status-bar {
+            height: 24px;
+            background: #000;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-left {
+            display: flex;
+            gap: 5px;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .app-container {
+            height: calc(100% - 24px);
+            background: white;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .app-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .app-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .app-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .app-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .container {
+            width: 100%;
+            background: white;
+            min-height: 100%;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .header-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .header .company {
+            font-size: 12px;
+            opacity: 0.8;
+            margin: 2px 0 0 0;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .save-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .form-section {
+            padding: 20px;
+            max-width: none;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+            color: #495057;
+            font-size: 14px;
+        }
+
+        .section-content {
+            padding: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 16px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .operator-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .operator-item label {
+            background: #007AFF;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .operator-item input {
+            border: none;
+            background: transparent;
+            padding: 8px;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .operator-item input:focus {
+            outline: none;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .materials-table {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #f1f3f4;
+            text-align: center;
+        }
+
+        .material-row {
+            transition: background-color 0.2s ease;
+        }
+
+        .material-row:hover {
+            background: #f8f9fa;
+        }
+
+        .material-name {
+            font-weight: 600;
+            color: #374151;
+            text-align: left;
+            padding-left: 16px;
+        }
+
+        .waste-section {
+            background: #fff8e1;
+        }
+
+        .waste-section .material-name {
+            color: #f57c00;
+        }
+
+        .input-cell {
+            width: 90px;
+            padding: 8px 12px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .input-cell:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.1);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 8px;
+            border: 1px solid #e1bee7;
+        }
+
+        .result-item label {
+            font-weight: 600;
+            color: #4a148c;
+            font-size: 14px;
+            min-width: 60px;
+        }
+
+        .result-item input {
+            flex: 1;
+            border: 1.5px solid #ce93d8;
+            background: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .result-item .unit {
+            font-weight: 600;
+            color: #4a148c;
+            font-size: 14px;
+        }
+
+        .floating-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: #007AFF;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.6);
+        }
+
+        .fab.secondary {
+            background: #6c757d;
+            box-shadow: 0 4px 16px rgba(108, 117, 125, 0.4);
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .signature-box {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .signature-box h4 {
+            color: #495057;
+            margin-bottom: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .signature-line {
+            border-bottom: 2px solid #6c757d;
+            width: 150px;
+            margin: 0 auto 10px;
+        }
+
+        .signature-box p {
+            color: #6c757d;
+            font-size: 12px;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                min-width: auto;
+                width: 95%;
+            }
+            
+            .form-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="date-time-display" id="currentDateTime"></div>
+            <h1>MAKER</h1>
+            <div class="company">CV. DELTA TOBACCO CIGARETTES</div>
+        </div>
+
+        <div class="form-section">
+            <div class="left-column">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hari_tanggal">Hari/Tanggal:</label>
+                        <input type="date" id="hari_tanggal">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shift">Shift:</label>
+                        <select id="shift">
+                            <option value="">Pilih Shift</option>
+                            <option value="I">I</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="mesin">Mesin:</label>
+                        <input type="text" id="mesin" placeholder="Nama Mesin">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produksi">Produksi:</label>
+                        <input type="text" id="produksi" placeholder="Jenis Produksi">
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="operator-section">
+                    <h3>OPERATOR</h3>
+                    <div class="operator-list">
+                        <div class="operator-item">
+                            <label>1</label>
+                            <input type="text" placeholder="Nama Operator 1">
+                        </div>
+                        <div class="operator-item">
+                            <label>2</label>
+                            <input type="text" placeholder="Nama Operator 2">
+                        </div>
+                        <div class="operator-item">
+                            <label>3</label>
+                            <input type="text" placeholder="Nama Operator 3">
+                        </div>
+                        <div class="operator-item">
+                            <label>4</label>
+                            <input type="text" placeholder="Nama Operator 4">
+                        </div>
+                        <div class="operator-item">
+                            <label>5</label>
+                            <input type="text" placeholder="Nama Operator 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="materials-table">
+                <div class="table-header">
+                    DAFTAR BAHAN BAKU DAN HASIL PRODUKSI
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">BAHAN</th>
+                            <th style="width: 25%;">MASUK</th>
+                            <th style="width: 25%;">KELUAR</th>
+                            <th style="width: 25%;">SISA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="material-name">TSG</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                        </tr>
+                        <tr>
+                            <td class="material-name">TSG REJECT</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                        </tr>
+                        <tr>
+                            <td class="material-name">FILTER</td>
+                            <td><input type="text" class="input-cell" placeholder="Batang"></td>
+                            <td><input type="text" class="input-cell" placeholder="Batang"></td>
+                            <td><input type="text" class="input-cell" placeholder="Batang"></td>
+                        </tr>
+                        <tr>
+                            <td class="material-name">AMBRI</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                        </tr>
+                        <tr>
+                            <td class="material-name">CTP</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                        </tr>
+                        <tr class="waste-section">
+                            <td class="material-name">WASTE BATANG</td>
+                            <td>-</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr class="waste-section">
+                            <td class="material-name">WASTE RAJANG</td>
+                            <td>-</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr class="waste-section">
+                            <td class="material-name">WASTE AMBRI / FILTER</td>
+                            <td>-</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr class="waste-section">
+                            <td class="material-name">WOL / DEBU</td>
+                            <td>-</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td>-</td>
+                        </tr>
+                        <tr class="waste-section">
+                            <td class="material-name">SPARATOR</td>
+                            <td>-</td>
+                            <td><input type="text" class="input-cell" placeholder="Kg"></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="result-section">
+                <div class="result-row">
+                    <div class="result-group">
+                        <label>HASIL:</label>
+                        <input type="number" id="hasil_trey" placeholder="Jumlah Trey">
+                        <span style="font-weight: 600; color: #2c3e50;">TREY</span>
+                    </div>
+                    <div class="result-group">
+                        <label>Berat:</label>
+                        <input type="number" id="hasil_berat" placeholder="0.00" step="0.01">
+                        <span style="font-weight: 600; color: #2c3e50;">Kg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notes-section">
+                <div class="notes-row">
+                    <div class="notes-group">
+                        <label for="keterangan">KETERANGAN:</label>
+                        <textarea id="keterangan" placeholder="Masukkan keterangan tambahan..."></textarea>
+                    </div>
+                    <div class="notes-group">
+                        <label for="part_diganti">PART YANG DIGANTI:</label>
+                        <textarea id="part_diganti" placeholder="Daftar part yang diganti..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <h4>Diajukan Oleh</h4>
+                    <div class="signature-line"></div>
+                    <p>(...........................)</p>
+                </div>
+                <div class="signature-box">
+                    <h4>Menyetujui</h4>
+                    <div class="signature-line"></div>
+                    <p>(...........................)</p>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="clearForm()">Reset Form</button>
+                <button class="btn btn-primary" onclick="saveForm()">Simpan Data</button>
+                <button class="btn btn-primary" onclick="printForm()">Print Form</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update current date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('currentDateTime').textContent = dateTimeString;
+        }
+
+        // Set today's date as default
+        function setDefaultDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('hari_tanggal').value = today;
+        }
+
+        // Auto calculate sisa (remaining materials)
+        function autoCalculateSisa() {
+            const rows = document.querySelectorAll('tbody tr:not(.waste-section)');
+            rows.forEach(row => {
+                const masukInput = row.querySelector('td:nth-child(2) input');
+                const keluarInput = row.querySelector('td:nth-child(3) input');
+                const sisaInput = row.querySelector('td:nth-child(4) input');
+                
+                if (masukInput && keluarInput && sisaInput) {
+                    function calculateSisa() {
+                        const masuk = parseFloat(masukInput.value) || 0;
+                        const keluar = parseFloat(keluarInput.value) || 0;
+                        const sisa = masuk - keluar;
+                        if (sisa >= 0) {
+                            sisaInput.value = sisa.toFixed(2);
+                        }
+                    }
+                    
+                    masukInput.addEventListener('input', calculateSisa);
+                    keluarInput.addEventListener('input', calculateSisa);
+                }
+            });
+        }
+
+        // Clear form function
+        function clearForm() {
+            if (confirm('Apakah Anda yakin ingin mengosongkan semua data?')) {
+                document.querySelectorAll('input, select, textarea').forEach(element => {
+                    if (element.type !== 'date') {
+                        element.value = '';
+                    }
+                });
+                setDefaultDate();
+            }
+        }
+
+        // Save form function
+        function saveForm() {
+            // Basic validation
+            const mesin = document.getElementById('mesin').value;
+            const shift = document.getElementById('shift').value;
+            const produksi = document.getElementById('produksi').value;
+
+            if (!mesin || !shift || !produksi) {
+                alert('Mohon lengkapi data Mesin, Shift, dan Produksi terlebih dahulu!');
+                return;
+            }
+
+            // Simulate saving
+            alert('Data berhasil disimpan!\n\nMesin: ' + mesin + '\nShift: ' + shift + '\nProduksi: ' + produksi);
+        }
+
+        // Print form function
+        function printForm() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            setDefaultDate();
+            autoCalculateSisa();
+            setInterval(updateDateTime, 60000); // Update every minute
+        });
+    </script>
+</body>
+</html>

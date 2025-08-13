@@ -1,0 +1,406 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #f5f5f5;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Splash Screen */
+#splash-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+}
+
+.splash-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.splash-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.splash-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Button Styles */
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px;
+}
+
+.btn-primary {
+    background: #2a5298;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1e3c72;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+    transform: translateY(-2px);
+}
+
+/* Form Paper Effect */
+.form-wrapper {
+    background: white;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 40px);
+    position: relative;
+}
+
+/* Header Section */
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+}
+
+.form-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-header h2 {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+/* Production Info Section */
+.production-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.field-group {
+    margin-bottom: 15px;
+}
+
+.field-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.field-group input, .field-group select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    background: white;
+}
+
+.field-group input:focus, .field-group select:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 2px rgba(42, 82, 152, 0.2);
+}
+
+/* Handwritten Input Style */
+.handwritten {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Names List */
+.names-list {
+    margin-top: 15px;
+}
+
+.name-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.name-item span {
+    margin-right: 10px;
+    font-weight: bold;
+    min-width: 30px;
+}
+
+.name-item input {
+    flex: 1;
+}
+
+/* Material Table */
+.material-table {
+    margin-bottom: 30px;
+}
+
+.material-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #dee2e6;
+}
+
+.material-table th {
+    background: #2a5298;
+    color: white;
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #1e3c72;
+}
+
+.material-table td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+}
+
+.material-table input {
+    width: 100%;
+    padding: 6px 8px;
+    border: none;
+    background: transparent;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    text-align: center;
+}
+
+.material-table input:focus {
+    outline: none;
+    background: #f8f9fa;
+}
+
+/* Waste Section */
+.waste-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.waste-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.waste-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.waste-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.waste-item label {
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.waste-item input {
+    flex: 1;
+    max-width: 80px;
+}
+
+/* Result Section */
+.result-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #e8f4fd;
+    border-radius: 6px;
+    border: 1px solid #bee5eb;
+}
+
+.result-section .field-group {
+    margin-bottom: 0;
+}
+
+.result-section input {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2a5298;
+}
+
+/* Notes Section */
+.notes-section {
+    margin-bottom: 30px;
+}
+
+.notes-section .field-group {
+    margin-bottom: 20px;
+}
+
+.notes-section textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.notes-section textarea:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 2px rgba(42, 82, 152, 0.2);
+}
+
+/* Signature Section */
+.signature-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.signature-box {
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    background: #f8f9fa;
+}
+
+.signature-line {
+    height: 2px;
+    background: #333;
+    margin: 20px 0;
+}
+
+.signature-box span {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Footer */
+.form-footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #dee2e6;
+    color: #666;
+    font-size: 12px;
+}
+
+.form-footer span {
+    margin: 0 10px;
+}
+
+/* Success Screen */
+#success-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.success-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.success-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.success-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.success-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.font-bold { font-weight: bold; }
+.mb-20 { margin-bottom: 20px; }
+.mt-20 { margin-top: 20px; } 
